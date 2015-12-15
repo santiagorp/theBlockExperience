@@ -1,0 +1,33 @@
+<template name="latestBlocks">
+  <div>
+    <div class="row">
+      <h1 class="small-12 columns">Latest blocks</h1>
+    </div>
+    <div class="row">
+      {{#if blocks}}
+      <table>
+        <thead>
+          <th>Number</th>
+          <th>Hash</th>
+          <th>Time</th>
+          <th>Transactions</th>
+          <th>Size</th>
+        </thead>
+        <tbody>
+          {{ #each blocks }}
+          <tr>
+            <td>{{height}}</td>
+            <td><a href="/block/{{hash}}">{{hash}}</a></td>
+            <td>{{ formatUnixTime time }}</td>
+            <td>{{ numTx }}</td>
+            <td>{{ formatSize size }}</td>
+          </tr>
+          {{ /each}}
+        </tbody>
+      </table>
+      {{ else }}
+      {{ > loading }}
+      {{ /if }}
+    </div>
+  </div>
+</template>

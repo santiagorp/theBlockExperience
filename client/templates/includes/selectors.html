@@ -1,0 +1,43 @@
+<template name="numberSelector">
+  <select data-name="{{dataName}}" name="{{name}}">
+    <option value="">{{firstText}}</option>
+    {{#each values}}
+      <option value="{{value}}" {{selectedString value}}>{{text}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="monthSelector">
+  <select data-name="{{dataName}}" name="{{name}}">
+    <option value="">Month</option>
+    {{#each values}}
+      <option value="{{value}}" {{selectedString value}}>{{text}}</option>
+    {{/each}}
+  </select>  
+</template>
+
+<template name="dateSelector">
+  {{#with widgetData}}
+  <div class="row">
+    <div class="small-4 columns">
+      {{> numberSelector dataName=yearInputName from=from to=to firstText="Year" value=selectedYear}}
+    </div>
+    <div class="small-4 columns">
+      {{> monthSelector dataName=monthInputName  value=selectedMonth}}
+    </div>
+    <div class="small-4 columns">
+      {{> numberSelector dataName=dayInputName from=1 to=31 firstText="Day"  value=selectedDay}}    
+    </div>
+    <input type="hidden" data-type="date" name="{{name}}" value="{{dateString}}"/>
+  </div>
+  {{/with}}
+</template>
+
+<template name="generalSelector">
+  <select name="{{name}}">
+    <option value="">{{firstText}}</option>
+    {{#each options}}
+      <option value="{{value}}" {{selectedString value}}>{{text}}</option>
+    {{/each}}
+  </select>
+</template>

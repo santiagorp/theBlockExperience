@@ -1,0 +1,33 @@
+<template name='transactions'>
+  {{ #if block }}
+  <div class="row text-center">
+    <div class="callout">
+      <div class="row">
+        <h1 class="medium-8 text-centered columns">Transactions on #{{block.height}}</h1>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <table>
+            <theader>
+              <th>
+                <td>Summary</td>
+              </th>
+            </theader>
+            <tbody>
+              {{ #each block.tx}}
+              <tr>
+                <td>#{{ @index }}</td>
+                <td><a href="/tx/{{this}}">{{ this }}</a></td>
+              </tr>
+              {{ /each }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ else }}
+  {{ > loading }}
+  {{ /if }}
+</template>

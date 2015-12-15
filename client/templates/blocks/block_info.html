@@ -1,0 +1,65 @@
+<template name="blockInfo">
+  {{ #if block }}
+  <div class="row text-center">
+    <div class="callout">
+      <div class="row">
+        <span class="medium-2 columns">
+          {{ #if block.previousblockhash }}
+          <a href="/block/{{block.previousblockhash}}">
+            <i class="fa fa-caret-left fa-4x"></i>
+          </a>
+          {{ /if }}
+        </span>
+        <h1 class="medium-8 text-centered columns">Block number: {{block.height}}</h1>
+        <span class="medium-2 columns">
+          {{ #if block.nextblockhash }}
+          <a href="/block/{{block.nextblockhash}}">
+            <i class="fa fa-caret-right fa-4x"></i>
+          </a>
+          {{ /if }}
+        </span>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <table>
+            <theader>
+              <th>
+                <td>Summary</td>
+              </th>
+            </theader>
+            <tbody>
+              <tr>
+                <td>Time</td>
+                <td>{{ formatUnixTime block.time }}</td>
+              </tr>
+              <tr>
+                <td>Hash</td>
+                <td>{{block.hash}}</td>
+              </tr>
+              <tr>
+                <td>Number of transactions</td>
+                <td><a href="/transactions/{{block.hash}}">{{block.numTx}}</a></td>
+              </tr>
+              <tr>
+                <td>Version</td>
+                <td>{{block.version}}</td>
+              </tr>
+              <tr>
+                <td>Size</td>
+                <td>{{ formatSize block.size }}</td>
+              </tr>
+              <tr>
+                <td>Confirmations</td>
+                <td>{{block.confirmations}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ else }}
+  {{ > loading }}
+  {{ /if }}
+</template>

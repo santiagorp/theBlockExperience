@@ -1,0 +1,76 @@
+<template name='transaction'>
+  {{ #if transaction }}
+  <div class="row text-center">
+    <div class="callout">
+      <div class="row">
+      <span class="medium-12 text-left columns">
+          <strong>Transaction id: {{transaction.txid}}</strong>
+        </span>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <table>
+            <theader>
+              <th>
+                <td>Summary</td>
+              </th>
+            </theader>
+            <tbody>
+              <tr>
+                <td>Block</td>
+                <td><a href="/block/{{transaction.blockhash }}">{{transaction.blockhash}}</a></td>
+              </tr>
+
+              <tr>
+                <td>Amount</td>
+                <td>{{ amount transaction }} BTC</td>
+              </tr>
+
+              <tr>
+                <td>To address</td>
+                <td>{{ destination transaction }}</td>
+              </tr>
+
+              <tr>
+                <td>change</td>
+                <td>{{ change transaction }} BTC</td>
+              </tr>
+
+              <tr>
+                <td>Change address</td>
+                <td>{{ changeAddress transaction }}</td>
+              </tr>
+
+
+              <tr>
+                <td>Fee</td>
+                <td>{{ transaction.fee }}</td>
+              </tr>
+
+              <tr>
+                <td>Number of confirmations</td>
+                <td>{{ transaction.confirmations }}</td>
+              </tr>
+
+              <tr>
+                <td>Time</td>
+                <td>{{ formatUnixTime transaction.time }}</td>
+              </tr>
+
+              {{# each inputs transaction }}
+              <tr>
+                <td>Input {{ @index }}</td>
+                <td><a href="/tx/{{this}}">{{ this }}</a></td>
+              </tr>
+              {{ /each }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ else }}
+  {{ > loading }}
+  {{ /if }}
+</template>

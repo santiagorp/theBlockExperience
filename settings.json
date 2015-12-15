@@ -1,0 +1,11 @@
+{
+  "public": {
+  },
+  "bitcoinNode": {
+    "host": "<your-full-node-address>",
+    "port": <your-full-node-rpc-port>,
+    "user": "<your-full-node-rpc-user>",
+    "pass": "<your-full-node-rpc-password>",
+    "timeout": 3000
+  }
+}

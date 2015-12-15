@@ -1,0 +1,20 @@
+<template name="confirmReveal">
+  {{#with dialogData}}
+  <div class="medium reveal">
+    <div class="container">
+      <div class="row">
+        <div class="small-12 small-centered columns text-center">
+          <h2>{{message}}</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 small-centered columns text-center">
+          <a class="cancelButton">{{cancelButtonText}}</a>
+          <button class="button formButton actionButton">{{actionButtonText}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/with}}
+</template>

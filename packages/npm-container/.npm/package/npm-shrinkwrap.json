@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "bitcoin": {
+      "version": "3.0.1"
+    }
+  }
+}

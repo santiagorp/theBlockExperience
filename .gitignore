@@ -1,0 +1,5 @@
+# Tern files
+*.tern-port*
+
+# Emac backups
+*#*#
