@@ -1,0 +1,15 @@
+<template name='confirmationsBar'>
+  <table class="confirmation-bar">
+    {{#if isConfirmed }}
+    <tr>
+      {{#each items }}
+      <td><div class="led {{this}}"></div></td>
+      {{/each }}
+    </tr>
+    {{else}}
+    <tr>
+    <td class="pending">Confirmation pending</td>
+    </tr>
+    {{/if}}
+  </table>
+</template>

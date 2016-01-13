@@ -1,9 +1,73 @@
 <template name='transaction'>
   {{ #if transaction }}
+  <div class="transaction-details">
+    <div class="row transaction-box">
+      <div class="small-12 columns">
+
+        <div class="row text-center sectionHeader">
+          <h1 class="top-margin">Transaction details</h1>
+        </div>
+
+        <div class="row text-center">
+          <div class="small-12 columns small-center transaction-id sectionHeader">
+            {{ transaction.txid }}
+          </div>
+        </div>
+
+        <div class="date row text-center small-12 columns">
+          {{ formatUnixTime transaction.time }}
+        </div>
+
+        <div class="row wallet text-center">
+          <img src="/images/wallet.svg"/>
+        </div>
+
+        <div class="row">
+          <li class="fa fa-arrow-down small-12 small-center columns transacion-arrow"></li>
+        </div>
+
+        <div class="text-center amount-box">
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="amount">
+                {{ amount transaction }}
+                <li class="fa fa-bitcoin"></li>
+                
+                <div class="confirmations">
+                  {{ > confirmationsBar transaction.confirmations}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <li class="fa fa-arrow-down small-12 small-center columns transacion-arrow"></li>
+        </div>
+
+        <div class="row text-center">
+          <div class="small-12 columns small-center address sectionHeader">
+            {{ destination transaction }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center fees">
+      <span>Transaction fees: {{fees transaction}} <li class="fa fa-bitcoin"></li></span>
+    </div>
+  </div>
+  {{ else }}
+  {{ > loading }}
+  {{ /if }}
+</template>
+
+<template name='transactionOld'>
+  {{ #if transaction }}
   <div class="row text-center">
     <div class="callout">
       <div class="row">
-      <span class="medium-12 text-left columns">
+        <span class="medium-12 text-left columns">
           <strong>Transaction id: {{transaction.txid}}</strong>
         </span>
       </div>

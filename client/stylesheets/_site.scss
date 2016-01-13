@@ -1,3 +1,23 @@
 body {
-    height: auto;
+  height: auto;    
+}
+
+.sectionHeader {
+  color: #F0F8FF;
+  background-color: #22262D;
+  .top-margin {
+    padding-top: 16px;
+  }
+}
+
+.dark {
+  background-color: #3B4454;
+  color: #F0F8FF;
+  h1, h2, h3, h4 {
+    color: #F0F8FF;
+  }  
+}
+
+table {
+  width: 100%;
 }

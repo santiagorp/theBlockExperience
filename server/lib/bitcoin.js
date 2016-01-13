@@ -3,7 +3,7 @@ Future = Npm.require('fibers/future');
 
 // all config options are optional
 var client = new Bitcoin.Client({
-  host: Meteor.settings.bitcoinNode.host, 
+  host: Meteor.settings.bitcoinNode.host,
   port: Meteor.settings.bitcoinNode.port,
   user: Meteor.settings.bitcoinNode.user,
   pass: Meteor.settings.bitcoinNode.pass,
@@ -40,6 +40,10 @@ Meteor.methods({
     var result = bitcoinSyncCall(args.shift(), args);
     return result;
   },*/
+  "bitcoin.getBlockHash": function(index) {
+    var hash = bitcoinSyncCall('getblockhash', index);
+    return hash;
+  },
   "bitcoin.getBlockByIndex": function(index) {
     var hash = bitcoinSyncCall('getblockhash', index);
     return Meteor.call('bitcoin.getBlock', hash);
@@ -84,5 +88,34 @@ Meteor.methods({
       blocks.push(block);
     });
     return blocks;
+  },
+  "bitcoin.getInputBalance": function(txId) {
+    // Try to find it in DB
+    console.log("Executing bitcoin.getInputBalance....");
+    var txData = TransactionData.findOne({
+      _id: txId
+    });
+    var amount = 0;
+    if (txData == null) {
+      var tx = bitcoinSyncCall('getrawtransaction', txId, 1);
+      for (var i = 0; i < tx.vin.length; i++) {
+        vin = tx.vin[i];
+        var index = vin.vout;
+        var inputTx = bitcoinSyncCall('getrawtransaction', vin.txid, 1);
+        amount += Math.round(inputTx.vout[index].value * 100000000);
+      }
+      amount = amount / 100000000;
+      TransactionData.upsert({
+        _id: txId
+      }, {
+        $set: {
+          _id: txId,
+          i: amount
+        }
+      });
+    } else {
+      return txData.i;
+    }
+    return amount;
   }
 });

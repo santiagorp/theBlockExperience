@@ -1,33 +1,34 @@
 <template name="latestBlocks">
   <div>
     <div class="row">
-      <h1 class="small-12 columns">Latest blocks</h1>
+      <h1 class="small-12 columns text-center">Search</h1>
     </div>
+
     <div class="row">
-      {{#if blocks}}
-      <table>
-        <thead>
-          <th>Number</th>
-          <th>Hash</th>
-          <th>Time</th>
-          <th>Transactions</th>
-          <th>Size</th>
-        </thead>
-        <tbody>
-          {{ #each blocks }}
-          <tr>
-            <td>{{height}}</td>
-            <td><a href="/block/{{hash}}">{{hash}}</a></td>
-            <td>{{ formatUnixTime time }}</td>
-            <td>{{ numTx }}</td>
-            <td>{{ formatSize size }}</td>
-          </tr>
-          {{ /each}}
-        </tbody>
-      </table>
-      {{ else }}
-      {{ > loading }}
-      {{ /if }}
+      <div class="small-6 small-centered columns">
+        <form class="search-form">
+          <div class="input-group">
+            <input class="input-group-field" name="term" type="text"
+            placeholder="Transaction id, Block number or Block hash">
+            <div class="input-group-button">
+              <input type="submit" class="button" value="Search">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row block-list">
+      {{#if blocks}} {{ #each blocks }}
+      <div class="row latestBlock">
+        <div class="small-6 small-centered columns text-center">
+          <div class="row blockInfo">
+            <div>{{formatUnixTime t}}, {{ n }} transactions</div>
+          </div>
+          {{> progressBar value=percent height=h size=s}}
+        </div>
+      </div>
+      {{ /each}} {{ else }} {{ > loading }} {{ /if }}
     </div>
   </div>
 </template>

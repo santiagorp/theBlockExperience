@@ -1,0 +1,116 @@
+$box_bg: #3B4454;
+$amount_bg: #888C9C;
+$address: #F0F8FF;
+$addressBg: #22262D;
+$confirmedBorder: #526752;
+$confirmedFill: #5D8A5D;
+$pending: #863636;
+$arrow: #22262D;
+
+.transaction-details {
+  .date {
+    margin-top: 10px;
+    font-size: 22px;
+    color: $address;
+  }
+
+  .fees {
+    margin-top: 12px;
+  }
+
+  .transaction-box {
+    border: solid 1px $addressBg;
+    background-color: $box_bg;
+
+    .wallet {
+      img {
+        height: 100px;
+        margin-top: 16px;
+      }
+    }
+
+    .transacion-arrow {
+      @-webkit-keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @-moz-keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @-o-keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      font-size: 3em;
+      color: $arrow;
+      margin: 20px 0px;
+      -webkit-animation: blink 1s;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation: blink 1s;
+      -moz-animation-iteration-count: infinite;
+      -o-animation: blink 1s;
+      -o-animation-iteration-count: infinite;
+    }
+
+    .amount-box {
+      .amount {
+        display: inline-block;
+        border: solid 4px $addressBg;
+        background-color: $amount_bg;
+        padding: 6px;
+        font-size: 2.5em;
+        padding-top: 0.5em;
+        border-radius: 5px;
+        white-space: nowrap;
+      }
+
+      .confirmation-bar {
+        width: 100%;
+        margin-bottom: 0px;
+
+        .led {
+          border: solid 1px $confirmedBorder;
+          margin: 2px;
+          height: 10px;
+        }
+        .confirmed {
+          background-color: $confirmedFill;
+        }
+        .pending {
+          color: $pending;
+          font-size: 22px;
+        }
+      }      
+    }
+
+    .transaction-id {
+      font-size: 20px;
+    }
+
+    .address {
+      font-size: 28px;
+    }
+  }
+}

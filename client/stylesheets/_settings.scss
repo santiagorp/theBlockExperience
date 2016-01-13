@@ -40,6 +40,9 @@
 
 @import '{zurb:foundation-sites}/scss/util/util';
 
+$dark-space-color: #888c9c;
+$white-gray-color: #F0F8FF;
+
 // 1. Global
 // ---------
 
@@ -56,9 +59,9 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
-$body-background: $white;
+$body-background: $dark-space-color;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: Orbitron, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -468,9 +471,10 @@ $switch-paddle-transition: all 0.25s ease-out;
 // 30. Table
 // ---------
 
-$table-background: $white;
+//$table-background: $white;
+$table-background: #3B4454;
 $table-color-scale: 5%;
-$table-border: 1px solid smart-scale($table-background, $table-color-scale);
+$table-border: 0px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
 $table-row-hover: darken($table-background, $table-hover-scale);
@@ -524,7 +528,6 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: #60BBA0;
+$topbar-background: #65697B;
 $topbar-link-color: #fff;
 $topbar-input-width: 200px;
-

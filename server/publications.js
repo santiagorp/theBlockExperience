@@ -8,9 +8,6 @@
 // });
 
 Meteor.publish('latestBlocks', function() {
-  return LatestBlocks.find();
-});
-
-Meteor.publish('blockIndexes', function() {
-  return BlockIndexes.find();
+  var result = BlockIndexes.find({}, { sort: { h: -1 }, limit: 15 });
+  return result;
 });

@@ -1,23 +1,25 @@
 <template name="blockInfo">
   {{ #if block }}
   <div class="row text-center">
-    <div class="callout">
-      <div class="row">
-        <span class="medium-2 columns">
-          {{ #if block.previousblockhash }}
-          <a href="/block/{{block.previousblockhash}}">
-            <i class="fa fa-caret-left fa-4x"></i>
-          </a>
-          {{ /if }}
-        </span>
-        <h1 class="medium-8 text-centered columns">Block number: {{block.height}}</h1>
-        <span class="medium-2 columns">
-          {{ #if block.nextblockhash }}
-          <a href="/block/{{block.nextblockhash}}">
-            <i class="fa fa-caret-right fa-4x"></i>
-          </a>
-          {{ /if }}
-        </span>
+    <div class="dark small-12 columns">
+      <div class="row sectionHeader">
+        <div class="top-margin">
+          <span class="medium-2 columns">
+            {{ #if block.previousblockhash }}
+            <a href="/block/{{block.previousblockhash}}">
+              <i class="fa fa-caret-left fa-4x"></i>
+            </a>
+            {{ /if }}
+          </span>
+          <h1 class="medium-8 text-centered columns">Block number: {{block.height}}</h1>
+          <span class="medium-2 columns">
+            {{ #if block.nextblockhash }}
+            <a href="/block/{{block.nextblockhash}}">
+              <i class="fa fa-caret-right fa-4x"></i>
+            </a>
+            {{ /if }}
+          </span>
+        </div>
       </div>
 
       <div class="row">
