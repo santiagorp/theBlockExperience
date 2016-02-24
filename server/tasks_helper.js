@@ -29,8 +29,16 @@ TaskHelper = (function() {
             h: i,
             n: block.numTx,
             s: block.size,
-            t: block.time
+            t: block.time,
+            v: block.version
           }
+
+          // Bitcon classic node. Add coinbase
+          if (blockIndex.v == 805306368) {
+            blockIndex.c = Meteor.call('bitcoin.getCoinbaseFromBlockIndex', i);
+            blockIndex.bh = block.hash;
+          }
+
           BlockIndexes.insert(blockIndex);
         }
       } catch (ex) {

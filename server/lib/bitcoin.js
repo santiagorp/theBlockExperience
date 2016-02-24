@@ -44,9 +44,9 @@ Meteor.methods({
     var hash = bitcoinSyncCall('getblockhash', index);
     return hash;
   },
-  "bitcoin.getBlockByIndex": function(index) {
+  "bitcoin.getBlockByIndex": function(index, withTx) {
     var hash = bitcoinSyncCall('getblockhash', index);
-    return Meteor.call('bitcoin.getBlock', hash);
+    return Meteor.call('bitcoin.getBlock', hash, withTx);
   },
   "bitcoin.getBlockCount": function() {
     var blockCount = bitcoinSyncCall('getblockcount');
@@ -88,6 +88,12 @@ Meteor.methods({
       blocks.push(block);
     });
     return blocks;
+  },
+  "bitcoin.getCoinbaseFromBlockIndex": function(index) {
+    var block = Meteor.call('bitcoin.getBlockByIndex', index, true);
+    var txId = block.tx[0];
+    var tx = Meteor.call('bitcoin.getTransaction', txId);
+    return tx.vout[0].scriptPubKey.addresses[0];
   },
   "bitcoin.getInputBalance": function(txId) {
     // Try to find it in DB
